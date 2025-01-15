@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import { Heading } from "@chakra-ui/react"
+import { Heading, Box, Center, AbsoluteCenter } from "@chakra-ui/react"
 
 function App() {
 
   return (
-    <>
-    <Heading size="6xl">
-    Hello
-    </Heading>
-    </>
+  <>
+    <AbsoluteCenter>    
+      <Heading size="6xl">
+        Hello
+      </Heading>
+    </AbsoluteCenter>
+  </>
   )
 }
 
