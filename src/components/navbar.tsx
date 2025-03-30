@@ -11,6 +11,7 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import "@fontsource/roboto-mono";
 
 export const Navbar = () => {
   return (
@@ -18,7 +19,7 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <div className="hidden lg:flex gap-4 ">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
+            <NavbarItem key={item.label}>
               <ScrollLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
@@ -28,7 +29,7 @@ export const Navbar = () => {
                 duration={500}
                 smooth={true}
                 style={{ cursor: "pointer" }}
-                to={item.href}
+                to={item.to}
               >
                 {item.label}
               </ScrollLink>

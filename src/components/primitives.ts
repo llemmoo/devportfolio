@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const title = tv({
-  base: "tracking-tight inline font-semibold",
+  base: "tracking-tight inline font-semibold", // Base styles
   variants: {
     color: {
       violet: "from-[#FF1CF7] to-[#b249f8]",
@@ -53,5 +53,6 @@ export const subtitle = tv({
   },
   defaultVariants: {
     fullWidth: true,
+    font: "roboto", // Default font variant
   },
 });
