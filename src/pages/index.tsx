@@ -9,7 +9,7 @@ export default function IndexPage() {
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-5">
         <div className="inline-block max-w-3xl text-center justify-center">
           <h1 className={title()}>Make&nbsp;</h1>
-          <h1 className={title({ color: "purple" })}>
+          <h1 className={title({ color: "green" })}>
             beautiful websites&nbsp;
           </h1>
           <br />

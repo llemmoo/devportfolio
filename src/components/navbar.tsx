@@ -2,6 +2,7 @@ import { Link } from "@heroui/link";
 import { Link as ScrollLink } from "react-scroll";
 import {
   Navbar as HeroUINavbar,
+  NavbarBrand,
   NavbarContent,
   NavbarItem,
 } from "@heroui/navbar";
@@ -18,16 +19,17 @@ export const Navbar = () => {
       isBordered
       shouldHideOnScroll
       className="bg-navbar text-foreground backdrop-blur-md"
-      maxWidth="lg"
+      maxWidth="sm"
       position="sticky"
       style={{
-        alignSelf: "center",
-        maxWidth: "40vw",
-        marginTop: "1rem",
-        borderRadius: "1rem",
+        maxWidth: "100vw",
+        padding: "none",
       }}
     >
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+      <NavbarBrand>
+
+      </NavbarBrand>
+      <NavbarContent className="basis-4/5 sm:basis-full justify-start" >
         <div className="hidden lg:flex gap-4 ">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.label}>
