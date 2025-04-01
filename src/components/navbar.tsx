@@ -11,11 +11,22 @@ import clsx from "clsx";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
-import "@fontsource/roboto-mono";
 
 export const Navbar = () => {
   return (
-    <HeroUINavbar maxWidth="lg" position="sticky">
+    <HeroUINavbar
+      isBordered
+      shouldHideOnScroll
+      className="bg-navbar text-foreground backdrop-blur-md"
+      maxWidth="lg"
+      position="sticky"
+      style={{
+        alignSelf: "center",
+        maxWidth: "40vw",
+        marginTop: "1rem",
+        borderRadius: "1rem",
+      }}
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <div className="hidden lg:flex gap-4 ">
           {siteConfig.navItems.map((item) => (
@@ -23,7 +34,7 @@ export const Navbar = () => {
               <ScrollLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-bold",
                 )}
                 color="foreground"
                 duration={500}

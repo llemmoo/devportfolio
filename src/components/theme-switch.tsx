@@ -27,8 +27,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getInputProps,
     getWrapperProps,
   } = useSwitch({
-    isSelected: theme === "light",
-    onChange: () => setTheme(theme === "light" ? "brown-dark" : "light"),
+    isSelected: theme === "light-cream",
+    onChange: () => setTheme(theme === "light-cream" ? "dark" : "light-cream"),
   });
 
   useEffect(() => {
@@ -50,6 +50,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
       })}
     >
       <VisuallyHidden>
+        z
         <input {...getInputProps()} />
       </VisuallyHidden>
       <div

@@ -17,92 +17,40 @@ export default {
   plugins: [
     heroui({
       themes: {
-        "purple-dark": {
-          extend: "dark",
+        "light-cream": {
+          extend: "light",
           colors: {
-            background: "#0D001A",
-            foreground: "#ffffff",
+            background: "#f2f3f4", // Much lighter brown
+            foreground: "#1e1e1e", // Dark text
+            navbar: "#E6E600", // Closer to background but distinguishable
             primary: {
-              50: "#3B096C",
-              100: "#520F83",
-              200: "#7318A2",
-              300: "#9823C2",
-              400: "#c031e2",
-              500: "#DD62ED",
-              600: "#F182F6",
-              700: "#FCADF9",
-              800: "#FDD5F9",
-              900: "#FEECFE",
-              DEFAULT: "#DD62ED",
-              foreground: "#ffffff",
+              50: "#f7efe5",
+              100: "#f6eadd",
+              200: "#f2e2d4",
+              300: "#e8d3c1",
+              400: "#d9bfa9",
+              500: "#c6a88f",
+              600: "#a98d75",
+              700: "#8d735e",
+              800: "#705848",
+              900: "#554032",
+              DEFAULT: "#c6a88f",
+              foreground: "#1e1e1e",
             },
-            focus: "#F182F6",
+            focus: "#e8d3c1", // Soft brown for focus elements
           },
         },
-        "yellow-dark": {
+        "dark": {
           extend: "dark",
           colors: {
-            background: "#1A1A00", // Dark yellowish background
-            foreground: "#FFF9C4", // Light yellow foreground
+            background: "#121212", // Very dark gray
+            foreground: "#e0e0e0", // Light gray text
+            navbar: "#181818", // Much darker navbar
             primary: {
-              50: "#665C00",
-              100: "#7A6F00",
-              200: "#998B00",
-              300: "#B8A700",
-              400: "#D7C300",
-              500: "#F5DF00", // Vibrant yellow
-              600: "#FFEC33",
-              700: "#FFF566",
-              800: "#FFFB99",
-              900: "#FFFECC",
-              DEFAULT: "#F5DF00",
-              foreground: "#1A1A00",
+              DEFAULT: "#b3916f",
+              foreground: "#e0e0e0",
             },
-            focus: "#D7C300",
-          },
-        },
-        "lime-dark": {
-          extend: "dark",
-          colors: {
-            background: "#102A10", // Deep greenish lime
-            foreground: "#D4ED92", // Light lime
-            primary: {
-              50: "#1B3F1B",
-              100: "#235423",
-              200: "#2E6A2E",
-              300: "#3D8A3D",
-              400: "#4EAB4E",
-              500: "#60CC60", // Bright lime
-              600: "#75DD75",
-              700: "#9EF29E",
-              800: "#C8FDC8",
-              900: "#E6FFE6",
-              DEFAULT: "#60CC60",
-              foreground: "#102A10",
-            },
-            focus: "#4EAB4E",
-          },
-        },
-        "brown-dark": {
-          extend: "dark",
-          colors: {
-            background: "#3B2C1A", // Dark, warm brown
-            foreground: "#E0C9A6", // Light brownish-beige
-            primary: {
-              50: "#4E3621",
-              100: "#5F4227",
-              200: "#73522E",
-              300: "#8A6436",
-              400: "#A0783F",
-              500: "#B78C48", // Light brown
-              600: "#CDA659",
-              700: "#E0C07A",
-              800: "#F3D8A0",
-              900: "#FAEBCF",
-              DEFAULT: "#B78C48",
-              foreground: "#3B2C1A",
-            },
-            focus: "#A0783F",
+            focus: "#d4b497",
           },
         },
       },
