@@ -8,18 +8,22 @@ export default function IndexPage() {
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-5">
         <div className="inline-block max-w-3xl text-center justify-center">
-          <h1 className={title()}>Make&nbsp;</h1>
-          <h1 className={title({ color: "green" })}>
-            beautiful websites&nbsp;
-          </h1>
+
+          <h1 className={title()}>Who am I?</h1>
+          <h1 className={subtitle({ color: "green" })}>I'm me!</h1>
           <br />
-          <h1 className={title()}>regardless of your design experience.</h1>
-          <div className={subtitle({ class: "mt-4" })}>
-            Beautiful, fast and modern React UI library.
-          </div>
         </div>
       </section>
       <About />
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-5">
+        <div className="inline-block max-w-3xl text-center justify-center">
+        <h1 className={subtitle({ color: "green" })}>
+            a few
+          </h1>
+          <h1 className={title()}>Projects</h1>
+          <br />
+        </div>
+      </section>
       <Projects />
     </DefaultLayout>
   );
