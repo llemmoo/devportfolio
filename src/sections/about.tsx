@@ -3,11 +3,10 @@ import { title } from "@/components/primitives";
 export default function About() {
   return (
     <section
-      className="flex flex-col items-center justify-center gap-4 py-8 md:py-10"
+      className="flex flex-col items-center justify-center gap-4 py-8 md:py-2"
       id="about"
     >
       <div />
-      <h1 className={title()}>Me&nbsp;</h1>
       <div className="inline-block max-w-3xl text-start justify-center">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
