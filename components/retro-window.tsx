@@ -30,7 +30,7 @@ export function RetroWindow({
       <div className="retro-title-bar h-10 flex items-end justify-between pb-1 pr-1">
         {title && (
           <div className="flex justify-between items-center">
-            <div className="retro-text font-medium text-[#8b4513]">{title}</div>
+            <div className="retro-text font-medium text-[#8b4513] pl-1.5">{title}</div>
           </div>
           )}
         <div className="justify-end">

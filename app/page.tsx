@@ -16,21 +16,22 @@ export default function Home() {
   }))
 
   const folders = [
-    { id: "folder120", name: "Folder120", color: "orange" as const },
-    { id: "folder116", name: "Folder116", color: "orange" as const },
-    { id: "folder115", name: "Folder115", color: "orange" as const },
+    { id: "folder120", name: "Folder120", color: "black" as const },
+    { id: "folder116", name: "Folder116", color: "black" as const },
+    { id: "folder115", name: "Folder115", color: "black" as const },
   ]
 
   return (
     <div className="min-h-screen bg-[#e0a030] p-4 flex flex-col">
+    <div className="max-w-9/10">
       <RetroNavbar className="mb-4" />
 
       <div className="flex flex-1 gap-4">
         <div className="flex flex-col gap-4">
-          <RetroShortcut type="computer" name="Computer" />
-          <RetroShortcut type="globe" name="Internet" />
-          <RetroShortcut type="mail" name="e-Mail" />
-            <RetroShortcut type="trash" name="Trash" />
+          <RetroShortcut type="computer" name="Computer" color="beige" />
+          <RetroShortcut type="globe" name="Internet" color="beige" />
+          <RetroShortcut type="mail" name="e-Mail" color="beige" />
+            <RetroShortcut type="trash" name="Trash" color="silver" />
         </div>
 
         <div className="flex-1 flex justify-center">
@@ -55,6 +56,7 @@ export default function Home() {
           ))}
         </div>
       </div>
+    </div>
     </div>
   )
 }
