@@ -1,62 +1,304 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { RetroNavbar } from "@/components/retro-navbar"
 import { RetroWindow } from "@/components/retro-window"
 import { RetroFileIcon } from "@/components/file-icon"
 import { RetroShortcut } from "@/components/retro-shortcut"
-import { ImageIcon } from "lucide-react"
+import { ImageIcon, CodeIcon, FileTextIcon, GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react"
 
 export default function Home() {
+
   const [selectedFile, setSelectedFile] = useState<string | null>(null)
 
-  const files = Array.from({ length: 18 }, (_, i) => ({
-    id: `file_${i + 319}`,
-    name: `File_${i + 319}`,
-  }))
+  // Window visibility state
+  const [windowVisibility, setWindowVisibility] = useState({
+    aboutMe: true,
+    portfolio: true,
+    picture1: true,
+    picture2: true,
+  })
 
-  const folders = [
-    { id: "folder120", name: "Folder120", color: "black" as const },
-    { id: "folder116", name: "Folder116", color: "black" as const },
-    { id: "folder115", name: "Folder115", color: "black" as const },
+  const [windowStates, setWindowStates] = useState({
+    aboutMe: true,
+    portfolio: true,
+    picture1: true,
+    picture2: true,
+  })
+
+  // Window z-index management
+  const [windowOrder, setWindowOrder] = useState(["aboutMe", "portfolio", "picture1", "picture2"])
+
+  // Function to bring a window to the front
+  const bringToFront = (windowId: string) => {
+    setWindowOrder((prev) => [...prev.filter((id) => id !== windowId), windowId])
+  }
+
+   // Toggle window visibility
+   const toggleWindow = (windowId: keyof typeof windowStates) => {
+    setWindowStates((prev) => ({
+      ...prev,
+      [windowId]: !prev[windowId],
+    }))
+
+    if (!windowStates[windowId]) {
+      bringToFront(windowId)
+    }
+  }
+
+    // Screen size detection
+    const [screenSize, setScreenSize] = useState({
+      width: typeof window !== "undefined" ? window.innerWidth : 1920,
+      height: typeof window !== "undefined" ? window.innerHeight : 1080,
+    })
+
+  // Update screen size on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+    // Close window
+    const closeWindow = (windowId: keyof typeof windowStates) => {
+      setWindowStates((prev) => ({
+        ...prev,
+        [windowId]: false,
+      }))
+    }
+
+  // Portfolio files
+  const portfolioFiles = [
+    { id: "project1", name: "Project 1", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "project2", name: "Project 2", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "resume", name: "Resume.pdf", icon: <FileTextIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "github", name: "GitHub", icon: <GithubIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "linkedin", name: "LinkedIn", icon: <LinkedinIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "twitter", name: "Twitter", icon: <TwitterIcon className="w-4 h-4 text-[#a08060]/80" /> },
   ]
 
+  // Folders for the sidebar
+  const folders = [
+    { id: "documents", name: "Documents", type: "folder" as const, color: "black" as const },
+    { id: "images", name: "Images", type: "folder" as const, color: "black" as const },
+    { id: "music", name: "Music", type: "folder" as const, color: "black" as const },
+    { id: "videos", name: "Videos", type: "folder" as const, color: "black" as const },
+    { id: "downloads", name: "Downloads", type: "folder" as const, color: "black" as const },
+    { id: "projects", name: "Projects", type: "folder" as const, color: "black" as const },
+  ]
+
+    // Calculate window positions based on screen size
+    const getWindowStyles = () => {
+      const isMobile = screenSize.width < 768
+      const containerWidth = isMobile ? screenSize.width * 0.95 : screenSize.width * 0.8
+    // Base styles for all windows
+    const baseStyles = {
+      aboutMe: {
+        width: isMobile ? "95%" : "60%",
+        height: isMobile ? "300px" : "350px",
+        position: "absolute" as const,
+        left: isMobile ? "2.5%" : "20%",
+        top: isMobile ? "80px" : "100px",
+        zIndex: windowOrder.indexOf("aboutMe") + 1,
+      },
+      portfolio: {
+        width: isMobile ? "95%" : "40%",
+        height: isMobile ? "350px" : "400px",
+        position: "absolute" as const,
+        left: isMobile ? "2.5%" : "10%",
+        top: isMobile ? "400px" : "200px",
+        zIndex: windowOrder.indexOf("portfolio") + 1,
+      },
+      picture1: {
+        width: isMobile ? "95%" : "30%",
+        height: isMobile ? "250px" : "300px",
+        position: "absolute" as const,
+        left: isMobile ? "2.5%" : "55%",
+        top: isMobile ? "770px" : "180px",
+        zIndex: windowOrder.indexOf("picture1") + 1,
+      },
+      picture2: {
+        width: isMobile ? "95%" : "35%",
+        height: isMobile ? "250px" : "320px",
+        position: "absolute" as const,
+        left: isMobile ? "2.5%" : "45%",
+        top: isMobile ? "1040px" : "500px",
+        zIndex: windowOrder.indexOf("picture2") + 1,
+      },
+    }
+
+    // Adjust for larger screens
+    if (screenSize.width >= 1440) {
+      baseStyles.aboutMe.width = "50%"
+      baseStyles.portfolio.width = "35%"
+      baseStyles.picture1.width = "25%"
+      baseStyles.picture2.width = "30%"
+    }
+
+    // Adjust for 4K screens
+    if (screenSize.width >= 2560) {
+      baseStyles.aboutMe.width = "40%"
+      baseStyles.aboutMe.height = "400px"
+      baseStyles.portfolio.width = "30%"
+      baseStyles.portfolio.height = "450px"
+      baseStyles.picture1.width = "20%"
+      baseStyles.picture1.height = "350px"
+      baseStyles.picture2.width = "25%"
+      baseStyles.picture2.height = "370px"
+    }
+
+    return baseStyles
+  }
+
+  const windowStyles = getWindowStyles()
+
   return (
-    <div className="min-h-screen bg-[#e0a030] p-4 flex flex-col">
-    <div className="max-w-9/10">
-      <RetroNavbar className="mb-4" />
+    <div className="min-h-screen bg-[#e0a030] p-4 flex flex-col relative">
+      {/* Navbar */}
+      <RetroNavbar className="mb-4 z-50 relative" />
 
-      <div className="flex flex-1 gap-4">
-        <div className="flex flex-col gap-4">
-          <RetroShortcut type="computer" name="Computer" color="beige" />
-          <RetroShortcut type="globe" name="Internet" color="beige" />
-          <RetroShortcut type="mail" name="e-Mail" color="beige" />
-            <RetroShortcut type="trash" name="Trash" color="silver" />
+      {/* Desktop Icons */}
+      <div className="flex flex-col md:flex-row flex-1 gap-4 z-0">
+        {/* Left sidebar */}
+        <div className="flex flex-row md:flex-col gap-4 mb-4 md:mb-0">
+          <RetroShortcut name="Computer" type="computer" onClick={() => toggleWindow("aboutMe")} />
+          <RetroShortcut name="Internet" type="globe" onClick={() => toggleWindow("portfolio")} />
+          <RetroShortcut name="e-Mail" type="mail" onClick={() => toggleWindow("picture1")} />
+          <div className="hidden md:block mt-auto">
+            <RetroShortcut name="Trash" type="trash" onClick={() => toggleWindow("picture2")} />
+          </div>
         </div>
 
-        <div className="flex-1 flex justify-center">
-          <RetroWindow className="w-full max-w-3xl h-[500px]" title="Portfolio">
-            <div className="grid grid-cols-6 gap-2">
-              {files.map((file) => (
-                <RetroFileIcon
-                  key={file.id}
-                  name={file.name}
-                  selected={selectedFile === file.id}
-                  icon={<ImageIcon className="w-4 h-4 text-[#a08060]/50 pixelated" />}
-                  onClick={() => setSelectedFile(file.id)}
-                />
-              ))}
-            </div>
-          </RetroWindow>
+        {/* Main content area - empty to allow for absolute positioning of windows */}
+        <div className="flex-1 relative min-h-[80vh]">
+          {/* About Me Window */}
+          {windowStates.aboutMe && (
+            <RetroWindow
+              className="overflow-hidden"
+              style={windowStyles.aboutMe}
+              title="About Me"
+              onClose={() => closeWindow("aboutMe")}
+              onMinimize={() => closeWindow("aboutMe")}
+              onMaximize={() => bringToFront("aboutMe")}
+              onClick={() => bringToFront("aboutMe")}
+            >
+              <div className="p-4 h-full overflow-auto">
+                <h2 className="text-lg font-semibold retro-text mb-3 text-[#8b4513]">John Doe</h2>
+                <p className="retro-text text-[#8b4513] mb-2">
+                  Frontend Developer with a passion for creating beautiful, responsive user interfaces.
+                </p>
+                <p className="retro-text text-[#8b4513] mb-2">
+                  Specializing in React, TypeScript, and modern CSS techniques. I love building applications that are
+                  both functional and aesthetically pleasing.
+                </p>
+                <p className="retro-text text-[#8b4513] mb-2">
+                  When I'm not coding, you can find me exploring vintage technology, playing retro video games, or
+                  experimenting with pixel art.
+                </p>
+                <h3 className="text-md font-semibold retro-text mt-4 mb-2 text-[#8b4513]">Skills</h3>
+                <ul className="list-disc pl-5 retro-text text-[#8b4513]">
+                  <li>React & Next.js</li>
+                  <li>TypeScript</li>
+                  <li>Tailwind CSS</li>
+                  <li>UI/UX Design</li>
+                  <li>Responsive Web Development</li>
+                </ul>
+              </div>
+            </RetroWindow>
+          )}
+
+          {/* Portfolio Window */}
+          {windowStates.portfolio && (
+            <RetroWindow
+              className="overflow-hidden"
+              style={windowStyles.portfolio}
+              title="Portfolio"
+              onClose={() => closeWindow("portfolio")}
+              onMinimize={() => closeWindow("portfolio")}
+              onMaximize={() => bringToFront("portfolio")}
+              onClick={() => bringToFront("portfolio")}
+            >
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 p-2">
+                {portfolioFiles.map((file) => (
+                  <RetroFileIcon
+                    key={file.id}
+                    name={file.name}
+                    selected={selectedFile === file.id}
+                    icon={file.icon}
+                    onClick={() => setSelectedFile(file.id)}
+                  />
+                ))}
+              </div>
+            </RetroWindow>
+          )}
+
+          {/* Picture Window 1 */}
+          {windowStates.picture1 && (
+            <RetroWindow
+              className="overflow-hidden"
+              style={windowStyles.picture1}
+              title="Sunset.jpg"
+              onClose={() => closeWindow("picture1")}
+              onMinimize={() => closeWindow("picture1")}
+              onMaximize={() => bringToFront("picture1")}
+              onClick={() => bringToFront("picture1")}
+            >
+              <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
+                <div className="w-full h-full bg-gradient-to-b from-[#ff7e5f] to-[#feb47b] rounded-sm flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-[#ff5e3a] relative bottom-10"></div>
+                </div>
+              </div>
+            </RetroWindow>
+          )}
+
+          {/* Picture Window 2 */}
+          {windowStates.picture2 && (
+            <RetroWindow
+              className="overflow-hidden"
+              style={windowStyles.picture2}
+              title="Mountains.jpg"
+              onClose={() => closeWindow("picture2")}
+              onMinimize={() => closeWindow("picture2")}
+              onMaximize={() => bringToFront("picture2")}
+              onClick={() => bringToFront("picture2")}
+            >
+              <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
+                <div className="w-full h-full bg-gradient-to-b from-[#7fc7d9] to-[#dcf2f1] rounded-sm flex items-end justify-center">
+                  <div className="w-full h-1/2 relative">
+                    <div className="absolute bottom-0 left-1/4 w-16 h-24 bg-[#6a7b76] rounded-t-lg"></div>
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-32 bg-[#4a5c55] rounded-t-lg"></div>
+                    <div className="absolute bottom-0 right-1/4 w-16 h-20 bg-[#6a7b76] rounded-t-lg"></div>
+                    <div className="w-full h-10 bg-[#8a9b86] absolute bottom-0"></div>
+                  </div>
+                </div>
+              </div>
+            </RetroWindow>
+          )}
         </div>
 
-        <div className="flex flex-col gap-4">
+        {/* Right sidebar */}
+        <div className="flex flex-row md:flex-col gap-4 mt-4 md:mt-0">
           {folders.map((folder) => (
-            <RetroShortcut key={folder.id} name={folder.name} color={folder.color} />
+            <RetroShortcut key={folder.id} name={folder.name} type={folder.type} color={folder.color} />
           ))}
+          <div className="md:hidden ml-auto">
+            <RetroShortcut name="Trash" type="trash" onClick={() => toggleWindow("picture2")} />
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Mobile-only folder dock at bottom */}
+      <div className="md:hidden flex justify-center gap-4 mt-4 pt-4 border-t border-[#a08060]/30">
+        <RetroShortcut name="Home" type="folder" />
+        <RetroShortcut name="Settings" type="folder" />
+        <RetroShortcut name="Calendar" type="folder" />
+      </div>
     </div>
   )
 }
