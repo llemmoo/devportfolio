@@ -100,35 +100,35 @@ export default function Home() {
     // Base styles for all windows
     const baseStyles = {
       aboutMe: {
-        width: isMobile ? "95%" : "60%",
-        height: isMobile ? "300px" : "350px",
+        width: isMobile ? "95%" : "40%",
+        height: isMobile ? "300px" : "400px",
         position: "absolute" as const,
-        left: isMobile ? "2.5%" : "20%",
+        left: isMobile ? "2.5%" : "30%",
         top: isMobile ? "80px" : "100px",
         zIndex: windowOrder.indexOf("aboutMe") + 1,
       },
       portfolio: {
-        width: isMobile ? "95%" : "40%",
-        height: isMobile ? "350px" : "400px",
+        width: isMobile ? "95%" : "35%",
+        height: isMobile ? "350px" : "350px",
         position: "absolute" as const,
-        left: isMobile ? "2.5%" : "10%",
-        top: isMobile ? "400px" : "200px",
-        zIndex: windowOrder.indexOf("portfolio") + 1,
+        left: isMobile ? "2.5%" : "15%",
+        top: isMobile ? "400px" : "42%",
+        zIndex: windowOrder.indexOf("portfolio") + 2,
       },
       picture1: {
         width: isMobile ? "95%" : "30%",
         height: isMobile ? "250px" : "300px",
         position: "absolute" as const,
         left: isMobile ? "2.5%" : "55%",
-        top: isMobile ? "770px" : "180px",
+        top: isMobile ? "770px" : "40%",
         zIndex: windowOrder.indexOf("picture1") + 1,
       },
       picture2: {
         width: isMobile ? "95%" : "35%",
         height: isMobile ? "250px" : "320px",
         position: "absolute" as const,
-        left: isMobile ? "2.5%" : "45%",
-        top: isMobile ? "1040px" : "500px",
+        left: isMobile ? "2.5%" : "35%",
+        top: isMobile ? "1040px" : "60%",
         zIndex: windowOrder.indexOf("picture2") + 1,
       },
     }
@@ -136,18 +136,18 @@ export default function Home() {
     // Adjust for larger screens
     if (screenSize.width >= 1440) {
       baseStyles.aboutMe.width = "50%"
-      baseStyles.portfolio.width = "35%"
+      baseStyles.portfolio.width = "25%"
       baseStyles.picture1.width = "25%"
       baseStyles.picture2.width = "30%"
     }
 
     // Adjust for 4K screens
     if (screenSize.width >= 2560) {
-      baseStyles.aboutMe.width = "40%"
-      baseStyles.aboutMe.height = "400px"
-      baseStyles.portfolio.width = "30%"
-      baseStyles.portfolio.height = "450px"
-      baseStyles.picture1.width = "20%"
+      baseStyles.aboutMe.width = "30%"
+      baseStyles.aboutMe.height = "500px"
+      baseStyles.portfolio.width = "20%"
+      baseStyles.portfolio.height = "350px"
+      baseStyles.picture1.width = "10%"
       baseStyles.picture1.height = "350px"
       baseStyles.picture2.width = "25%"
       baseStyles.picture2.height = "370px"
@@ -182,7 +182,7 @@ export default function Home() {
             <RetroWindow
               className="overflow-hidden"
               style={windowStyles.aboutMe}
-              title="About Me"
+              title="AboutMe.txt"
               onClose={() => closeWindow("aboutMe")}
               onMinimize={() => closeWindow("aboutMe")}
               onMaximize={() => bringToFront("aboutMe")}
@@ -243,16 +243,15 @@ export default function Home() {
             <RetroWindow
               className="overflow-hidden"
               style={windowStyles.picture1}
-              title="Sunset.jpg"
+              title="MeInShibuya.png"
               onClose={() => closeWindow("picture1")}
               onMinimize={() => closeWindow("picture1")}
               onMaximize={() => bringToFront("picture1")}
               onClick={() => bringToFront("picture1")}
             >
               <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
-                <div className="w-full h-full bg-gradient-to-b from-[#ff7e5f] to-[#feb47b] rounded-sm flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-[#ff5e3a] relative bottom-10"></div>
-                </div>
+              <img src="images/pixelate12.png" alt="Mochi.png" style={{maxWidth: 400}}/>
+
               </div>
             </RetroWindow>
           )}
@@ -262,21 +261,16 @@ export default function Home() {
             <RetroWindow
               className="overflow-hidden"
               style={windowStyles.picture2}
-              title="Mountains.jpg"
+              title="Mochi.png"
               onClose={() => closeWindow("picture2")}
               onMinimize={() => closeWindow("picture2")}
               onMaximize={() => bringToFront("picture2")}
               onClick={() => bringToFront("picture2")}
             >
               <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
-                <div className="w-full h-full bg-gradient-to-b from-[#7fc7d9] to-[#dcf2f1] rounded-sm flex items-end justify-center">
-                  <div className="w-full h-1/2 relative">
-                    <div className="absolute bottom-0 left-1/4 w-16 h-24 bg-[#6a7b76] rounded-t-lg"></div>
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-32 bg-[#4a5c55] rounded-t-lg"></div>
-                    <div className="absolute bottom-0 right-1/4 w-16 h-20 bg-[#6a7b76] rounded-t-lg"></div>
-                    <div className="w-full h-10 bg-[#8a9b86] absolute bottom-0"></div>
-                  </div>
-                </div>
+                <picture>
+                <img src="images/pixelatePoch12.png" alt="Mochi.png" style={{maxWidth: 400}}/>
+                </picture>
               </div>
             </RetroWindow>
           )}
