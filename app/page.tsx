@@ -77,10 +77,10 @@ export default function Home() {
   const portfolioFiles = [
     { id: "project1", name: "Project 1", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "project2", name: "Project 2", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "project3", name: "Project 3", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "resume", name: "Resume.pdf", icon: <FileTextIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "github", name: "GitHub", icon: <GithubIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "linkedin", name: "LinkedIn", icon: <LinkedinIcon className="w-4 h-4 text-[#a08060]/80" /> },
-    { id: "twitter", name: "Twitter", icon: <TwitterIcon className="w-4 h-4 text-[#a08060]/80" /> },
   ]
 
   // Folders for the sidebar
@@ -101,7 +101,7 @@ export default function Home() {
     const baseStyles = {
       aboutMe: {
         width: isMobile ? "95%" : "40%",
-        height: isMobile ? "300px" : "400px",
+        height: isMobile ? "300px" : "500px",
         position: "absolute" as const,
         left: isMobile ? "2.5%" : "30%",
         top: isMobile ? "80px" : "100px",
@@ -111,7 +111,7 @@ export default function Home() {
         width: isMobile ? "95%" : "35%",
         height: isMobile ? "350px" : "350px",
         position: "absolute" as const,
-        left: isMobile ? "2.5%" : "15%",
+        left: isMobile ? "2.5%" : "31%",
         top: isMobile ? "400px" : "42%",
         zIndex: windowOrder.indexOf("portfolio") + 2,
       },
@@ -119,15 +119,15 @@ export default function Home() {
         width: isMobile ? "95%" : "30%",
         height: isMobile ? "250px" : "300px",
         position: "absolute" as const,
-        left: isMobile ? "2.5%" : "55%",
+        left: isMobile ? "2.5%" : "58%",
         top: isMobile ? "770px" : "40%",
         zIndex: windowOrder.indexOf("picture1") + 1,
       },
       picture2: {
         width: isMobile ? "95%" : "35%",
-        height: isMobile ? "250px" : "320px",
+        height: isMobile ? "250px" : "400px",
         position: "absolute" as const,
-        left: isMobile ? "2.5%" : "35%",
+        left: isMobile ? "2.5%" : "15%",
         top: isMobile ? "1040px" : "60%",
         zIndex: windowOrder.indexOf("picture2") + 1,
       },
@@ -135,10 +135,10 @@ export default function Home() {
 
     // Adjust for larger screens
     if (screenSize.width >= 1440) {
-      baseStyles.aboutMe.width = "50%"
+      baseStyles.aboutMe.width = "30%"
       baseStyles.portfolio.width = "25%"
-      baseStyles.picture1.width = "25%"
-      baseStyles.picture2.width = "30%"
+      baseStyles.picture1.width = "15%"
+      baseStyles.picture2.width = "15%"
     }
 
     // Adjust for 4K screens
@@ -146,11 +146,11 @@ export default function Home() {
       baseStyles.aboutMe.width = "30%"
       baseStyles.aboutMe.height = "500px"
       baseStyles.portfolio.width = "20%"
-      baseStyles.portfolio.height = "350px"
+      baseStyles.portfolio.height = "400px"
       baseStyles.picture1.width = "10%"
-      baseStyles.picture1.height = "350px"
-      baseStyles.picture2.width = "25%"
-      baseStyles.picture2.height = "370px"
+      baseStyles.picture1.height = "500px"
+      baseStyles.picture2.width = "10%"
+      baseStyles.picture2.height = "400px"
     }
 
     return baseStyles
@@ -250,7 +250,7 @@ export default function Home() {
               onClick={() => bringToFront("picture1")}
             >
               <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
-              <img src="images/pixelate12.png" alt="Mochi.png" style={{maxWidth: 400}}/>
+              <img src="images/pixelate12.png" alt="Mochi.png" style={{maxWidth: 350}}/>
 
               </div>
             </RetroWindow>

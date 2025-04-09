@@ -1,6 +1,7 @@
 import type React from "react"
 import { cn } from "@/lib/utils"
 import { FileIcon } from "lucide-react"
+import "@/styles/globals.css"
 
 interface RetroFileIconProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
@@ -22,7 +23,7 @@ export function RetroFileIcon({ className, name, selected = false, icon, ...prop
         <FileIcon className="w-8 h-8 text-[#a08060]" />
         <div className="absolute inset-0 flex items-center justify-center">{icon}</div>
       </div>
-      <div className="text-xs text-center retro-text text-[#8b4513] max-w-[80px] truncate">{name}</div>
+      <div className="text-xs text-center retro-text text-[#8b4513] max-w-[80px] truncate" style={{userSelect: "none"}}>{name}</div>
     </div>
   )
 }
