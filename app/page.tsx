@@ -5,25 +5,19 @@ import { RetroNavbar } from "@/components/retro-navbar"
 import { RetroWindow } from "@/components/retro-window"
 import { RetroFileIcon } from "@/components/file-icon"
 import { RetroShortcut } from "@/components/retro-shortcut"
-import { ImageIcon, CodeIcon, FileTextIcon, GithubIcon, LinkedinIcon, TwitterIcon } from "lucide-react"
+import { CodeIcon, FileTextIcon, GithubIcon, LinkedinIcon } from "lucide-react"
 
 export default function Home() {
 
   const [selectedFile, setSelectedFile] = useState<string | null>(null)
 
   // Window visibility state
-  const [windowVisibility, setWindowVisibility] = useState({
-    aboutMe: true,
-    portfolio: true,
-    picture1: true,
-    picture2: true,
-  })
-
   const [windowStates, setWindowStates] = useState({
     aboutMe: true,
     portfolio: true,
     picture1: true,
     picture2: true,
+    bachelorProject: false,
   })
 
   // Window z-index management
@@ -75,7 +69,7 @@ export default function Home() {
 
   // Portfolio files
   const portfolioFiles = [
-    { id: "project1", name: "Project 1", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "bachelorProject", name: "BachelorThesis", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "project2", name: "Project 2", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "project3", name: "Project 3", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "resume", name: "Resume.pdf", icon: <FileTextIcon className="w-4 h-4 text-[#a08060]/80" /> },
@@ -232,6 +226,7 @@ export default function Home() {
                     selected={selectedFile === file.id}
                     icon={file.icon}
                     onClick={() => setSelectedFile(file.id)}
+                    onDoubleClick={() => (toggleWindow("bachelorProject"))}
                   />
                 ))}
               </div>
