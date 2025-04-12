@@ -28,6 +28,17 @@ export default function Home() {
     setWindowOrder((prev) => [...prev.filter((id) => id !== windowId), windowId])
   }
 
+  const handleDoubleClick = (windowId?: keyof typeof windowStates, linkRef?: string) => {
+    if(windowId)
+    {
+      toggleWindow(windowId);
+    }
+    if(linkRef)
+    {
+      window.open(linkRef, "_blank")?.focus();
+    }
+  }
+
    // Toggle window visibility
    const toggleWindow = (windowId: keyof typeof windowStates) => {
     setWindowStates((prev) => ({
@@ -73,8 +84,8 @@ export default function Home() {
     { id: "project2", name: "Project 2", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "project3", name: "Project 3", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "resume", name: "Resume.pdf", icon: <FileTextIcon className="w-4 h-4 text-[#a08060]/80" /> },
-    { id: "github", name: "GitHub", icon: <GithubIcon className="w-4 h-4 text-[#a08060]/80" /> },
-    { id: "linkedin", name: "LinkedIn", icon: <LinkedinIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "github", name: "GitHub", url: "https://github.com/llemmoo", icon: <GithubIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "linkedin", name: "LinkedIn", url: "https://linkedin.com/in/oliver-lemonakis", icon: <LinkedinIcon className="w-4 h-4 text-[#a08060]/80" /> },
   ]
 
   // Folders for the sidebar
@@ -111,7 +122,7 @@ export default function Home() {
       },
       picture1: {
         width: isMobile ? "95%" : "30%",
-        height: isMobile ? "250px" : "300px",
+        height: isMobile ? "250px" : "350px",
         position: "absolute" as const,
         left: isMobile ? "2.5%" : "58%",
         top: isMobile ? "770px" : "40%",
@@ -125,14 +136,23 @@ export default function Home() {
         top: isMobile ? "1040px" : "60%",
         zIndex: windowOrder.indexOf("picture2") + 1,
       },
+      bachelorProject: {
+        width: isMobile ? "95%" : "50%",
+        height: isMobile ? "250px" : "850px",
+        position: "absolute" as const,
+        left: isMobile ? "2.5%" : "22%",
+        top: isMobile ? "50%" : "10%",
+        zIndex: windowOrder.indexOf("bachelorProject") + 1,
+      },
     }
+    
 
     // Adjust for larger screens
     if (screenSize.width >= 1440) {
       baseStyles.aboutMe.width = "30%"
       baseStyles.portfolio.width = "25%"
       baseStyles.picture1.width = "15%"
-      baseStyles.picture2.width = "15%"
+      baseStyles.picture2.width = "18%"
     }
 
     // Adjust for 4K screens
@@ -212,7 +232,7 @@ export default function Home() {
             <RetroWindow
               className="overflow-hidden"
               style={windowStyles.portfolio}
-              title="Portfolio"
+              title="Portfolio.links"
               onClose={() => closeWindow("portfolio")}
               onMinimize={() => closeWindow("portfolio")}
               onMaximize={() => bringToFront("portfolio")}
@@ -221,13 +241,19 @@ export default function Home() {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 p-2">
                 {portfolioFiles.map((file) => (
                   <RetroFileIcon
-                    key={file.id}
-                    name={file.name}
-                    selected={selectedFile === file.id}
-                    icon={file.icon}
-                    onClick={() => setSelectedFile(file.id)}
-                    onDoubleClick={() => (toggleWindow("bachelorProject"))}
-                  />
+                  key={file.id}
+                  name={file.name}
+                  selected={selectedFile === file.id}
+                  icon={file.icon}
+                  onClick={() => setSelectedFile(file.id)}
+                  onDoubleClick={() => {
+                    if (file.id in windowStates) {
+                      handleDoubleClick(file.id as keyof typeof windowStates);
+                    } else {
+                      handleDoubleClick(undefined, file.url);
+                    }
+                  }}
+                />
                 ))}
               </div>
             </RetroWindow>
@@ -245,7 +271,7 @@ export default function Home() {
               onClick={() => bringToFront("picture1")}
             >
               <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
-              <img src="images/pixelate12.png" alt="Mochi.png" style={{maxWidth: 350}}/>
+              <img src="images/pixelate12.png" alt="Mochi.png" style={{maxWidth: "100%"}}/>
 
               </div>
             </RetroWindow>
@@ -262,13 +288,33 @@ export default function Home() {
               onMaximize={() => bringToFront("picture2")}
               onClick={() => bringToFront("picture2")}
             >
-              <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
+              <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-0">
                 <picture>
-                <img src="images/pixelatePoch12.png" alt="Mochi.png" style={{maxWidth: 400}}/>
+                <img src="images/pixelatePoch12.png" alt="Mochi.png" style={{maxWidth: "100%"}}/>
                 </picture>
               </div>
             </RetroWindow>
           )}
+
+          {/* Bachelor Project */}
+          {windowStates.bachelorProject && (
+            <RetroWindow
+              className="overflow-hidden"
+              style={windowStyles.bachelorProject}
+              title="BachelorProject"
+              onClose={() => closeWindow("bachelorProject")}
+              onMinimize={() => closeWindow("bachelorProject")}
+              onMaximize={() => bringToFront("bachelorProject")}
+              onClick={() => bringToFront("bachelorProject")}
+            >
+              <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-0">
+                <picture>
+                <img src="images/pixelatePoch12.png" alt="Mochi.png" style={{maxWidth: "100%"}}/>
+                </picture>
+              </div>
+            </RetroWindow>
+          )}
+
         </div>
 
         {/* Right sidebar */}
