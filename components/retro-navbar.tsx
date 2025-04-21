@@ -10,7 +10,7 @@ interface RetroNavbarProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function RetroNavbar({
   className,
-  items = [{ label: "File" }, { label: "Edit" }, { label: "View" }, { label: "Special" }, { label: "Help" }],
+  items = [{ label: "File" }, { label: "Edit" }, { label: "View" }, { label: "Help" }],
   showTime = true,
   ...props
 }: RetroNavbarProps) {

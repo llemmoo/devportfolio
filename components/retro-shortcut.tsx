@@ -1,12 +1,12 @@
 import type React from "react"
 import { cn } from "@/lib/utils"
-import { FolderOpenIcon, ComputerIcon, GlobeIcon, MailIcon, TrashIcon, Trash2Icon } from "lucide-react"
+import { FolderOpenIcon, ComputerIcon, GlobeIcon, MailIcon, FileTextIcon, FileImageIcon, LinkIcon, Trash2Icon } from "lucide-react"
 
 interface RetroFolderProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string
   selected?: boolean 
   color?: "beige" | "orange" | "black" | "white" | "silver" | "default"
-  type?: "folder" | "computer" | "globe" | "mail" | "trash"
+  type?: "folder" | "computer" | "globe" | "mail" | "trash" | "textfile" | "imagefile" | "links"
 }
 
 export function RetroShortcut({ className, name, type, selected = false, color = "default", ...props }: RetroFolderProps) {
@@ -16,7 +16,7 @@ export function RetroShortcut({ className, name, type, selected = false, color =
     black: "text-[#000000]",
     white: "text-[#ffffff]",
     silver: "text-[#2b2b2b]",
-    default: "text-[#6080c0]",
+    default: "text-[#2b2b2b]",
   }
 
   const getIcon= () =>{
@@ -29,6 +29,12 @@ export function RetroShortcut({ className, name, type, selected = false, color =
         return<GlobeIcon className={cn("w-16 h-16", colorClasses[color])} />
       case "mail": 
         return <MailIcon className={cn("w-16 h-16", colorClasses[color])} />
+      case "textfile": 
+        return <FileTextIcon className={cn("w-16 h-16", colorClasses[color])} />
+      case "imagefile": 
+        return <FileImageIcon className={cn("w-16 h-16", colorClasses[color])} />
+      case "links": 
+        return <LinkIcon className={cn("w-16 h-16", colorClasses[color])} />
       case "trash": 
         return <Trash2Icon className={cn("w-16 h-16", colorClasses[color])} />
       default:

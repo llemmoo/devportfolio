@@ -94,7 +94,7 @@ export default function Home() {
       aboutMe: {
         ...commonStyle,
         width: isMobile ? "90vw" : isTablet ? "60vw" : isLargeDesktop ? "35vw" : "35vw",
-        height: isMobile ? "300px" : "500px",
+        height: isMobile ? "300px" : "440px",
         left: isMobile ? "5vw" : "25vw",
         top: "0px",
         zIndex: windowOrder.indexOf("aboutMe") + 1,
@@ -119,14 +119,14 @@ export default function Home() {
         ...commonStyle,
         width: isMobile ? "90vw" : isTablet ? "40vw" : "20vw",
         height: "300px",
-        left: isMobile ? "5vw" : "7vw",
+        left: isMobile ? "5vw" : "6vw",
         top: isMobile ? "1080px" : "400px",
         zIndex: windowOrder.indexOf("picture2") + 1,
       },
       bachelorProject: {
         ...commonStyle,
         width: isMobile ? "90vw" : isTablet ? "70vw" : "50vw",
-        height: isMobile ? "300px" : "850px",
+        height: isMobile ? "300px" : "600px",
         left: isMobile ? "5vw" : "20vw",
         top: isMobile ? "50%" : "10%",
         zIndex: windowOrder.indexOf("bachelorProject") + 1,
@@ -142,11 +142,11 @@ export default function Home() {
 
       <div className="flex flex-col md:flex-row flex-1 gap-4 z-0">
         <div className="flex flex-row md:flex-col gap-4 mb-4 md:mb-0">
-          <RetroShortcut name="Computer" type="computer" onClick={() => toggleWindow("aboutMe")} />
-          <RetroShortcut name="Internet" type="globe" onClick={() => toggleWindow("portfolio")} />
-          <RetroShortcut name="e-Mail" type="mail" onClick={() => toggleWindow("picture1")} />
+          <RetroShortcut name="About Me" type="textfile" onClick={() => toggleWindow("aboutMe")} />
+          <RetroShortcut name="Portfolio" type="links" onClick={() => toggleWindow("portfolio")} />
+          <RetroShortcut name="Shibuya" type="imagefile" onClick={() => toggleWindow("picture1")} />
           <div className="hidden md:block mt-auto">
-            <RetroShortcut name="Trash" type="trash" onClick={() => toggleWindow("picture2")} />
+            <RetroShortcut name="Mochi" type="imagefile" onClick={() => toggleWindow("picture2")} />
           </div>
         </div>
 
@@ -161,18 +161,18 @@ export default function Home() {
               onClick={() => bringToFront("aboutMe")}
             >
               <div className="p-4 h-full overflow-auto text-[#8b4513]">
-                <h2 className="text-lg font-semibold retro-text mb-3">John Doe</h2>
-                <p className="retro-text mb-2">Frontend Developer with a passion for creating beautiful UIs.</p>
-                <p className="retro-text mb-2">Specialized in React, TypeScript, and Tailwind CSS.</p>
-                <p className="retro-text mb-2">Enjoys retro games, pixel art, and hardware hacking.</p>
-                <h3 className="text-md font-semibold retro-text mt-4 mb-2">Skills</h3>
+                <h2 className="text-lg font-semibold retro-text mb-3">Hi, my name is Oliver Lemonakis</h2>
+                <p className="retro-text mb-2">I am a full stack developer, with an academic background in UI/UX, with a passion for good design and clean code</p>
+                <p className="retro-text mb-2">I'm a dog owner, a keyboard nerd, and I can answer any question you may have about the Roman Empire.</p>
+                <h3 className="text-md font-semibold retro-text mt-2 mb-2">Skills</h3>
                 <ul className="list-disc pl-5 retro-text">
-                  <li>React & Next.js</li>
-                  <li>TypeScript</li>
-                  <li>Tailwind CSS</li>
-                  <li>UI/UX Design</li>
-                  <li>Responsive Web Dev</li>
+                  <li>C# & Unity</li>
+                  <li>.NET, Dapper, Blazor</li>
+                  <li>TypeScript & JavaScript</li>
+                  <li>React, Next.js, Vite</li>
+                  <li>UI/UX Design & Ethnography</li>
                 </ul>
+                <p className="retro-text mt-4">Double-click on items in the Portfolio window, to open them 👾</p>
               </div>
             </RetroWindow>
           )}
