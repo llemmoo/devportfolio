@@ -1,4 +1,6 @@
 let userConfig = undefined
+const isGithubPages = process.env.NODE_ENV === 'production';
+const repoName = 'devportfolio';
 try {
   // try to import ESM first
   userConfig = await import('./v0-user-next.config.mjs')
@@ -48,4 +50,8 @@ if (userConfig) {
   }
 }
 
-export default nextConfig
+export default {
+  basePath: isGithubPages ? `/${repoName}` : '',
+  assetPrefix: isGithubPages ? `/${repoName}/` : '',
+  output: 'export',
+};
