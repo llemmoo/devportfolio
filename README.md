@@ -1,5 +1,5 @@
 Project portfolio inspired by Kaiju No.8
 
-[Site](lemo.work)  
-[Github](github.com/llemmoo)  
-[LinkedIn](linkedin.com/in/oliver-lemonakis)  
+[Site](https://lemo.work)  
+[Github](https://github.com/llemmoo)  
+[LinkedIn](https://linkedin.com/in/oliver-lemonakis)  
