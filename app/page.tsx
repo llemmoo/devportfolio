@@ -6,6 +6,8 @@ import { RetroWindow } from "@/components/retro-window"
 import { RetroFileIcon } from "@/components/file-icon"
 import { RetroShortcut } from "@/components/retro-shortcut"
 import { CodeIcon, FileTextIcon, GithubIcon, LinkedinIcon } from "lucide-react"
+import  Bachelor  from "@/components/projects/bachelor"
+import  MyGrade  from "@/components/projects/myGrade"
 
 export default function Home() {
   const [selectedFile, setSelectedFile] = useState<string | null>(null)
@@ -63,8 +65,8 @@ export default function Home() {
   }, [])
 
   const portfolioFiles = [
-    { id: "bachelorProject", name: "BachelorThesis", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
-    { id: "project2", name: "Project 2", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "bachelorProject", name: "Bachelor_Thesis", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "myGrade", name: "My_Grade", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "project3", name: "Project 3", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "resume", name: "Resume.pdf", icon: <FileTextIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "github", name: "GitHub", url: "https://github.com/llemmoo", icon: <GithubIcon className="w-4 h-4 text-[#a08060]/80" /> },
@@ -126,8 +128,8 @@ export default function Home() {
       bachelorProject: {
         ...commonStyle,
         width: isMobile ? "90vw" : isTablet ? "70vw" : "50vw",
-        height: isMobile ? "300px" : "600px",
-        left: isMobile ? "5vw" : "20vw",
+        height: isMobile ? "300px" : "65vh",
+        left: isMobile ? "5vw" : "15vw",
         top: isMobile ? "50%" : "10%",
         zIndex: windowOrder.indexOf("bachelorProject") + 1,
       },
@@ -160,12 +162,12 @@ export default function Home() {
               onMaximize={() => bringToFront("aboutMe")}
               onClick={() => bringToFront("aboutMe")}
             >
-              <div className="p-4 h-full overflow-auto text-[#8b4513]">
-                <h2 className="text-lg font-semibold retro-text mb-3">Hi, my name is Oliver Lemonakis</h2>
-                <p className="retro-text mb-2">I am a full stack developer, with an academic background in UI/UX, with a passion for good design and clean code</p>
+              <div className="p-4 h-full overflow-auto">
+                <h2 className="text-lg font-semibold retro-text mb-3  text-[#8b4513]">Hi, my name is Oliver Lemonakis</h2>
+                <p className="retro-text mb-2">I am a full stack developer, with an academic background in product development, with a passion for good design and clean code</p>
                 <p className="retro-text mb-2">I'm a dog owner, a keyboard nerd, and I can answer any question you may have about the Roman Empire.</p>
-                <h3 className="text-md font-semibold retro-text mt-2 mb-2">Skills</h3>
-                <ul className="list-disc pl-5 retro-text">
+                <h3 className="text-lg font-semibold retro-text mt-2 mb-2  text-[#8b4513]">Skills</h3>
+                <ul className="list-disc pl-5 retro-text font-">
                   <li>C# & Unity</li>
                   <li>.NET, Dapper, Blazor</li>
                   <li>TypeScript & JavaScript</li>
@@ -254,13 +256,7 @@ export default function Home() {
               onMaximize={() => bringToFront("bachelorProject")}
               onClick={() => bringToFront("bachelorProject")}
             >
-              <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
-                <img
-                  src="/images/pixelatePoch12.png"
-                  alt="Bachelor Project"
-                  style={{ maxWidth: "100%", height: "auto" }}
-                />
-              </div>
+              <Bachelor/>
             </RetroWindow>
           )}
         </div>
