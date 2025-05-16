@@ -8,7 +8,7 @@ export default function bachelor() {
                 Exploring Vision-Based Interactions in VR Horror Games
             </h1>
                 <img
-                  src="/images/bachelorPic1.png"
+                  src="./images/bachelorPic1.png"
                   alt="Bachelor Project"
                   style={{ maxWidth: "100%", height: "auto", msUserSelect:"none", WebkitTouchCallout: "none", WebkitUserSelect: "none", userSelect: "none"}}
                 />

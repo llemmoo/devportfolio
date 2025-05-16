@@ -229,7 +229,7 @@ export default function Home() {
             >
               <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
                 <img
-                  src="/images/pixelate12.png"
+                  src="./images/pixelate12.png"
                   alt="Me in Shibuya"
                   style={{ maxWidth: "100%", height: "auto" }}
                 />
@@ -248,7 +248,7 @@ export default function Home() {
             >
               <div className="h-full flex items-center justify-center bg-[#f5f0e8] p-2">
                 <img
-                  src="/images/pixelatePoch12.png"
+                  src="./images/pixelatePoch12.png"
                   alt="Mochi"
                   style={{ maxWidth: "100%", height: "auto" }}
                 />
