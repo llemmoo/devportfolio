@@ -18,6 +18,7 @@ export default function Home() {
     picture1: true,
     picture2: true,
     bachelorProject: false,
+    myGradeProject: false
   })
 
   const [windowOrder, setWindowOrder] = useState(["aboutMe", "portfolio", "picture1", "picture2"])
@@ -66,7 +67,7 @@ export default function Home() {
 
   const portfolioFiles = [
     { id: "bachelorProject", name: "Bachelor_Thesis", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
-    { id: "myGrade", name: "My_Grade", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
+    { id: "myGradeProject", name: "My_Grade", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "project3", name: "Project 3", icon: <CodeIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "resume", name: "Resume.pdf", icon: <FileTextIcon className="w-4 h-4 text-[#a08060]/80" /> },
     { id: "github", name: "GitHub", url: "https://github.com/llemmoo", icon: <GithubIcon className="w-4 h-4 text-[#a08060]/80" /> },
@@ -133,6 +134,14 @@ export default function Home() {
         top: isMobile ? "50%" : "10%",
         zIndex: windowOrder.indexOf("bachelorProject") + 1,
       },
+      myGrade: {
+        ...commonStyle,
+        width: isMobile ? "90vw" : isTablet ? "70vw" : "50vw",
+        height: isMobile ? "300px" : "65vh",
+        left: isMobile ? "5vw" : "17.5vw",
+        top: isMobile ? "50%" : "10%",
+        zIndex: windowOrder.indexOf("myGradeProject") + 1,
+      }
     }
   }
 
@@ -257,6 +266,19 @@ export default function Home() {
               onClick={() => bringToFront("bachelorProject")}
             >
               <Bachelor/>
+            </RetroWindow>
+          )}
+
+          {windowStates.myGradeProject && (
+            <RetroWindow
+              style={windowStyles.myGrade}
+              title="MyGrade"
+              onClose={() => closeWindow("myGradeProject")}
+              onMinimize={() => closeWindow("myGradeProject")}
+              onMaximize={() => bringToFront("myGradeProject")}
+              onClick={() => bringToFront("myGradeProject")}
+            >
+              <MyGrade/>
             </RetroWindow>
           )}
         </div>
