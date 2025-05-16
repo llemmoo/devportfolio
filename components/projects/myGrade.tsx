@@ -8,7 +8,7 @@ export default function myGrade() {
                 MyGrade, a easier way to get your grades
             </h1>
                 <img
-                  src="/images/myGradePic1.png"
+                  src="./images/myGradePic1.png"
                   alt="MyGrade Homepage"
                   style={{ maxWidth: "60%", height: "auto" }}
                 />
