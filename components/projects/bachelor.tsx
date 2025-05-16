@@ -10,7 +10,7 @@ export default function bachelor() {
                 <img
                   src="/images/bachelorPic1.png"
                   alt="Bachelor Project"
-                  style={{ maxWidth: "100%", height: "auto" }}
+                  style={{ maxWidth: "100%", height: "auto", msUserSelect:"none", WebkitTouchCallout: "none", WebkitUserSelect: "none", userSelect: "none"}}
                 />
             <p className="text-center text-lg retro-text mt-4 mb-4">
                 Our thesis concerned the use of eye-tracking in VR-gaming. 

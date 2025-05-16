@@ -52,7 +52,7 @@ export function RetroShortcut({ className, name, type, selected = false, color =
       {...props}
     >
       {getIcon()}
-        <div className="text-s text-center retro-text text-[#000000] max-w-[80px] truncate" style={{userSelect: "none"}}>{name}</div>
+        <div className="text-s text-center retro-text text-[#000000] max-w-[80px] truncate" style={{ WebkitUserSelect: "none", userSelect: "none"}}>{name}</div>
     </div>
   )
 }
