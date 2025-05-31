@@ -51,7 +51,5 @@ if (userConfig) {
 }
 
 export default {
-  basePath: isGithubPages ? `/${repoName}` : '',
-  assetPrefix: isGithubPages ? `/${repoName}/` : '',
   output: 'export',
 };
